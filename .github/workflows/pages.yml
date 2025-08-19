@@ -20,17 +20,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      - run: npm ci || npm i
+      # Log versions to make debug easy
+      - run: node -v && npm -v
+      # Install deps; fall back if lockfile is picky
+      - run: npm ci || npm i --legacy-peer-deps
+
+      # Build your Vite app
       - run: npm run build
+
       # SPA fallback so refresh on deep routes works
       - run: cp dist/index.html dist/404.html
 
-      # These two steps are required for Pages
+      # Required for Pages
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
