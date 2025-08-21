@@ -8,6 +8,10 @@ export default function Stonewall() {
     { img: "prototype.png", label: "Final Prototype" },
   ];
 
+  // Figma prototype URL (re-used for hero + bottom CTA)
+  const figmaHref =
+    "https://www.figma.com/proto/goq1ydeQjF5G1CAFCoQGks/M15-Stonewall?node-id=150-631&t=GxVYayFwiL7txwQo-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=150%3A631";
+
   return (
     <FadeWrapper>
       {/* HERO */}
@@ -18,14 +22,26 @@ export default function Stonewall() {
         <p className="text-md sm:text-lg text-gray-300 max-w-2xl mx-auto mb-8">
           Inclusive redesign focused on accessibility, community, and clarity — transforming Stonewall Columbus into a welcoming digital hub.
         </p>
-        {/* GIF placeholder */}
-        <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg bg-[#2A2A2A]">
+
+        {/* Clickable hero → Figma prototype */}
+        <a
+          href={figmaHref}
+          target="_blank"
+          rel="noreferrer"
+          className="group block max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg bg-[#2A2A2A] relative"
+          aria-label="Open Figma Prototype"
+        >
           <img
             src="/stonewall-demo.gif"
             alt="Stonewall Redesign Demo"
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
           />
-        </div>
+          {/* hover overlay CTA */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="pointer-events-none absolute bottom-4 right-4 px-3 py-1.5 text-sm rounded-lg bg-[#FFA629] text-[#1C1C1C] font-semibold shadow-md opacity-0 group-hover:opacity-100 transition duration-300">
+            Open Figma Prototype →
+          </div>
+        </a>
       </section>
 
       {/* PROBLEM + GOALS */}
@@ -76,7 +92,6 @@ export default function Stonewall() {
               key={idx}
               className="relative group rounded-2xl overflow-hidden bg-[#2A2A2A] shadow-lg transition transform hover:scale-105"
             >
-              {/* Uniform height & padding */}
               <div className="flex items-center justify-center h-48 bg-[#1C1C1C]">
                 <img
                   src={`/${item.img}`}
@@ -84,7 +99,6 @@ export default function Stonewall() {
                   className="max-h-full max-w-full object-contain"
                 />
               </div>
-              {/* Hover overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition duration-300 p-4">
                 <p className="text-lg font-semibold text-[#FFA629]">{item.label}</p>
                 <p className="text-sm text-gray-300 mt-2">Exploration and refinement phases</p>
@@ -94,18 +108,6 @@ export default function Stonewall() {
         </div>
       </section>
 
-      {/* PROTOTYPE CTA */}
-      <section className="bg-[#1C1C1C] text-white pt-10 pb-24 px-4 sm:px-8 text-center">
-        <h2 className="text-2xl font-semibold mb-4 text-[#F266AB]">View the High-Fidelity Prototype</h2>
-        <a
-          href="https://www.figma.com/proto/goq1ydeQjF5G1CAFCoQGks/M15-Stonewall?node-id=150-631&t=GxVYayFwiL7txwQo-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=150%3A631"
-          target="_blank"
-          rel="noreferrer"
-          className="text-[#FFA629] underline text-lg"
-        >
-          Open Figma Prototype →
-        </a>
-      </section>
     </FadeWrapper>
   );
 }

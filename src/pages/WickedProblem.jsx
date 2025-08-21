@@ -8,6 +8,10 @@ export default function WickedProblem() {
     { img: "prototype1.png", label: "High-Fidelity Prototype" },
   ];
 
+  // Figma prototype URL (re-used for hero + bottom CTA)
+  const figmaHref =
+    "https://www.figma.com/proto/f4vJ84kLQeoC6wodB8Ji1r/WickedProblem?node-id=70-38&node-type=frame&t=Hszp61vW4fRDkyAv-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A5&show-proto-sidebar=1";
+
   return (
     <FadeWrapper>
       {/* HERO */}
@@ -18,14 +22,25 @@ export default function WickedProblem() {
         <p className="text-md sm:text-lg text-gray-300 max-w-2xl mx-auto mb-8">
           Tackling complex transportation challenges with user-centered solutions — exploring accessibility, sustainability, and community-driven impact.
         </p>
-        <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg bg-[#2A2A2A]">
-          {/* Replace with your image/GIF later */}
+
+        {/* Clickable hero → Figma prototype */}
+        <a
+          href={figmaHref}
+          target="_blank"
+          rel="noreferrer"
+          className="group block max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg bg-[#2A2A2A] relative"
+          aria-label="Open Figma Prototype"
+        >
           <img
             src="/wicked-demo.png"
             alt="Wicked Problem Demo"
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
           />
-        </div>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="pointer-events-none absolute bottom-4 right-4 px-3 py-1.5 text-sm rounded-lg bg-[#FFA629] text-[#1C1C1C] font-semibold shadow-md opacity-0 group-hover:opacity-100 transition duration-300">
+            Open Figma Prototype →
+          </div>
+        </a>
       </section>
 
       {/* PROBLEM + GOALS */}
@@ -73,20 +88,7 @@ export default function WickedProblem() {
         </div>
       </section>
 
-      {/* PROTOTYPE CTA */}
-      <section className="bg-[#1C1C1C] text-white pt-10 pb-24 px-4 sm:px-8 text-center">
-        <h2 className="text-2xl font-semibold mb-4 text-[#F266AB]">
-          View the High-Fidelity Prototype
-        </h2>
-        <a
-          href="https://www.figma.com/proto/f4vJ84kLQeoC6wodB8Ji1r/WickedProblem?node-id=70-38&node-type=frame&t=Hszp61vW4fRDkyAv-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A5&show-proto-sidebar=1"
-          target="_blank"
-          rel="noreferrer"
-          className="text-[#FFA629] underline text-lg"
-        >
-          Open Figma Prototype →
-        </a>
-      </section>
+      
     </FadeWrapper>
   );
 }

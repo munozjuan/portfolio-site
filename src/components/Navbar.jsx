@@ -95,13 +95,7 @@ const Navbar = () => {
             </Link>
           ))}
 
-          <Link
-            to="/contact"
-            onClick={() => setIsOpen(false)}
-            className="mt-6 bg-[#FFA629] text-black px-6 py-3 text-lg font-medium uppercase tracking-wide hover:bg-[#e6951f] transition"
-          >
-            Let's work together →
-          </Link>
+          
         </div>
       )}
     </nav>
