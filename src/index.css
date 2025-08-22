@@ -98,3 +98,25 @@ button:focus-visible {
   right: -12px;
   bottom: 15%;
 }
+
+
+/* --- scroll unlock + safe bottom spacing --- */
+html, body {
+  height: auto;
+  min-height: 100%;
+}
+
+html, body, #root {
+  overflow-x: clip;      /* don't clip vertical scroll */
+  overflow-y: auto;      /* ensure pages can scroll */
+}
+
+#root { min-height: 100%; }
+
+/* modern mobile viewport unit fallback */
+@supports (height: 100dvh) {
+  :root { --vh: 100dvh; }
+}
+@supports not (height: 100dvh) {
+  :root { --vh: 100vh; }
+}

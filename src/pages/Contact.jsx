@@ -11,6 +11,9 @@ import {
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
+
+
+
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
   whileInView: { opacity: 1, y: 0 },
@@ -67,7 +70,12 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen bg-[#111] text-[#EDEDED] px-4 sm:px-6 py-12 sm:py-16 flex items-start justify-center"
+      className="
+        relative overflow-x-clip bg-[#1C1C1C] text-[#EDEDED]
+        min-h-[calc(var(--vh)-80px)]
+        px-4 sm:px-6 py-10 sm:py-14 pb-28
+        flex items-start justify-center
+      "
     >
       <div className="w-full max-w-5xl">
         {/* Header */}
